@@ -1,0 +1,47 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+label {
+    font-size: large;
+    color: red;
+}
+
+.FormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.FormElement {
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
+}
+
+.SubmitBtn {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+textarea {
+    height: 200px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}

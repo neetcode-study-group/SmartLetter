@@ -1,5 +1,5 @@
 import "./App.css";
-import CoverLetterForm from "./form/CoverLetterForm";
+import CoverLetterForm from "./components/CoverLetterForm";
 import { DOMMessage, DOMMessageResponse } from "./types";
 import React from "react";
 

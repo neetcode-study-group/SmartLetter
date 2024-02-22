@@ -6,6 +6,7 @@ from langchain_gpt import generate_cover_letter
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/generate", methods=["POST"])
 def generate():
     formData = request.form
@@ -15,5 +16,6 @@ def generate():
     print(formData["jobDescription"])
     print(files["fileResume"])
 
-    output = generate_cover_letter(formData["textResume"], formData["jobDescription"])
+    output = generate_cover_letter(
+        formData["textResume"], formData["jobDescription"])
     return output.get("text")

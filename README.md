@@ -30,7 +30,7 @@ Smart Letter uses Flask for the backend to manage data processing and Langchain 
 
 ## Support
 
-If you happen to have any issues or have suggestions for improvements, please submit a problem on our GitHub repository or contact us directly at support@smartletter.io.
+If you happen to have any issues or have suggestions for improvements, please submit a problem on our GitHub repository or contact us directly at [Email]
 
 ## License
 

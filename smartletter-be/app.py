@@ -14,6 +14,7 @@ def generate():
 
     print(formData["textResume"])
     print(formData["jobDescription"])
+    print(formData["tabUrl"])
     print(files["fileResume"])
 
     output = generate_cover_letter(

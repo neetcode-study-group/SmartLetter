@@ -4,4 +4,5 @@ export type DOMMessage = {
 
 export type DOMMessageResponse = {
     jobDescription: string;
+    tabUrl: string;
 };

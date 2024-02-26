@@ -3,20 +3,12 @@ import "./CoverLetterForm.css";
 import { DOMMessage, DOMMessageResponse } from "../types";
 import axios from "axios";
 
-type CoverLetterFormProps = {
-    jobDescription: string;
-    setJobDescription: (jobDescription: string) => void;
-};
-
-const CoverLetterForm = (props: CoverLetterFormProps) => {
-    const [formValues, setFormValues] = React.useState({ textResume: "", jobDescription: props.jobDescription });
+const CoverLetterForm = () => {
+    const [formValues, setFormValues] = React.useState({ textResume: "", jobDescription: "", tabUrl: "" });
     const [fileResume, setFileResume] = React.useState<File | null>(null);
 
     React.useEffect(() => {
-        /**
-         * We can't use "chrome.runtime.sendMessage" for sending messages from React.
-         * For sending messages from React we need to specify which tab to send it to.
-         */
+        // Select the active tab in the current window during the component's first render
         chrome.tabs &&
             chrome.tabs.query(
                 {
@@ -24,17 +16,12 @@ const CoverLetterForm = (props: CoverLetterFormProps) => {
                     currentWindow: true,
                 },
                 (tabs) => {
-                    /**
-                     * Sends a single message to the content script(s) in the specified tab,
-                     * with an optional callback to run when a response is sent back.
-                     *
-                     * The runtime.onMessage event is fired in each content script running
-                     * in the specified tab for the current extension.
-                     */
-                    chrome.tabs.sendMessage(tabs[0].id || 0, { type: "GET_JOB_DESC" } as DOMMessage, (response: DOMMessageResponse) => {
+                    // Send a message to the content script to get the job description
+                    chrome.tabs.sendMessage(tabs[0].id || 0, { type: "GET_TAB_DETAILS" } as DOMMessage, (response: DOMMessageResponse) => {
                         setFormValues({
                             ...formValues,
                             jobDescription: response.jobDescription,
+                            tabUrl: response.tabUrl,
                         });
                     });
                 }
@@ -44,7 +31,7 @@ const CoverLetterForm = (props: CoverLetterFormProps) => {
     const handleChange = (e: any) => {
         const { name, value } = e.target;
 
-        if (name == "fileResume") {
+        if (name === "fileResume") {
             setFileResume(e.target.files[0]);
         } else {
             setFormValues({
@@ -52,18 +39,17 @@ const CoverLetterForm = (props: CoverLetterFormProps) => {
                 [name]: value,
             });
         }
-        console.log("fileResume", fileResume);
     };
 
     const handleSubmit = async (e: any) => {
-        const url = "http://localhost:5000/generate";
+        const url = process.env.GENERATE_COVER_LETTER_URL || "http://localhost:5000/generate";
         e.preventDefault();
         const formData = new FormData();
         formData.append("textResume", formValues.textResume);
         formData.append("jobDescription", formValues.jobDescription);
+        formData.append("tabUrl", formValues.tabUrl);
         if (!fileResume) console.log("No file selected");
         else {
-            console.log("appending file to form data: ", fileResume);
             formData.append("fileResume", fileResume, fileResume.name);
         }
         axios

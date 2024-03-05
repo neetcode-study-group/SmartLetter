@@ -1,5 +1,7 @@
 # Backend Setup Instructions
 
+Install MiKTeX from https://miktex.org/download
+
 Install Python 3.12 and add installation to environment variables
 
 Run this command to check current python version, make sure it is 3.12
@@ -39,3 +41,7 @@ Install requirements.txt
 Create .env file and add
 
 `OPENAI_API_KEY={YOUR_TOKEN}`
+
+Run the server:
+
+`python app.py`

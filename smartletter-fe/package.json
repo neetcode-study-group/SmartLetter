@@ -44,6 +44,7 @@
     },
     "devDependencies": {
         "@types/chrome": "^0.0.259",
-        "cross-env": "^7.0.3"
+        "cross-env": "^7.0.3",
+        "tailwindcss": "^3.4.1"
     }
 }

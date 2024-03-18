@@ -1,5 +1,5 @@
 import React from "react";
-import "./CoverLetterForm.css";
+// import "./CoverLetterForm.css";
 import { DOMMessage, DOMMessageResponse } from "../types";
 import axios from "axios";
 
@@ -66,9 +66,18 @@ const CoverLetterForm = () => {
             });
     };
     return (
-        <div className="FormContainer">
-            <form onSubmit={handleSubmit}>
-                <div className="FormElement">
+        <div className="FormContainer flex justify-center
+                    w-100 h-120 bg-zinc-900 text-gray-100 font-interLight flex-wrap">
+            <div className="FormTabs text-xl bg-neutral-500 h-14 w-full">
+                <button type="button" className="w-1/2 h-full hover:bg-neutral-800">
+                    Generator
+                </button>
+                <button type="button" className="w-1/2 h-full hover:bg-neutral-800">
+                    Letter Preview
+                </button>
+            </div>
+            <form onSubmit={handleSubmit} className="text-lg h-fit w-fit text-center">
+                {/* <div className="FormElement">
                     <label>Resume:</label>
                     <br />
                     <textarea
@@ -78,18 +87,18 @@ const CoverLetterForm = () => {
                         value={formValues.textResume}
                         name="textResume"
                     />
-                </div>
+                </div> */}
                 <div className="FormElement">
-                    <label>Upload Resume:</label>
-                    <br />
-                    <input
-                        onChange={(e) => {
-                            handleChange(e);
-                        }}
-                        type="file"
-                        name="fileResume"
-                        accept=".pdf"
-                        id=""
+                    <label>Upload Your Resume:</label>
+                        <input
+                            onChange={(e) => {
+                                handleChange(e);
+                            }}
+                            type="file"
+                            name="fileResume"
+                            accept=".pdf"
+                            id=""
+                            className=""
                     />
                 </div>
                 <div className="FormElement">

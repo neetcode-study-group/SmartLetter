@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Inter-Extra-Light";
+    src: url("../src/fonts/Inter-ExtraLight.ttf");
+}

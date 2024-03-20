@@ -12,8 +12,11 @@ module.exports = {
         100: '420px',
       },
       height: {
-        120: '538px',
+        120: '620px',
       },
+      padding: {
+        25: '100px',
+      }
     },
   },
   plugins: [],

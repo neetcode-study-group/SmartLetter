@@ -6,3 +6,8 @@
     font-family: "Inter-Extra-Light";
     src: url("../src/fonts/Inter-ExtraLight.ttf");
 }
+
+@font-face {
+    font-family: "Inter-Semi-Bold";
+    src: url("../src/fonts/Inter-SemiBold.ttf");
+}

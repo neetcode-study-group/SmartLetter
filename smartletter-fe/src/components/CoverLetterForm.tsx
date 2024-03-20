@@ -67,16 +67,16 @@ const CoverLetterForm = () => {
     };
     return (
         <div className="FormContainer flex justify-center
-                    w-100 h-120 bg-zinc-900 text-gray-100 font-interLight flex-wrap">
-            <div className="FormTabs text-xl bg-neutral-500 h-14 w-full">
-                <button type="button" className="w-1/2 h-full hover:bg-neutral-800">
+                    w-100 h-120 bg-zinc-800 text-gray-100 flex-wrap">
+            <div className="FormTabs text-xl bg-neutral-600 h-14 w-full font-interLight">
+                <button type="button" className="w-1/2 h-full hover:bg-neutral-500">
                     Generator
                 </button>
-                <button type="button" className="w-1/2 h-full hover:bg-neutral-800">
+                <button type="button" className="w-1/2 h-full hover:bg-neutral-500">
                     Letter Preview
                 </button>
             </div>
-            <form onSubmit={handleSubmit} className="text-lg h-fit w-fit text-center">
+            <form onSubmit={handleSubmit} className="text-lg h-full w-fit text-center mt-14">
                 {/* <div className="FormElement">
                     <label>Resume:</label>
                     <br />
@@ -88,32 +88,38 @@ const CoverLetterForm = () => {
                         name="textResume"
                     />
                 </div> */}
-                <div className="FormElement">
-                    <label>Upload Your Resume:</label>
-                        <input
-                            onChange={(e) => {
-                                handleChange(e);
-                            }}
-                            type="file"
-                            name="fileResume"
-                            accept=".pdf"
-                            id=""
-                            className=""
+                <div className="FormElement font-interLight">               
+                    <label>Upload Your Resume in PDF:</label>
+                    <br />
+                    <input
+                        onChange={(e) => {
+                            handleChange(e);
+                        }}
+                        type="file"
+                        name="fileResume"
+                        accept=".pdf"
+                        id=""
+                        className={fileResume 
+                                    ? "mt-2 text-base w-full pl-25 text-center"
+                                    : "mt-2 text-base w-full pl-25 text-center"}
                     />
                 </div>
-                <div className="FormElement">
-                    <label>Job Description:</label>
+                <div className="FormElement font-interLight mt-14">
+                    <label>Insert Job Description URL:</label>
                     <br />
-                    <textarea
+                    <input
                         onChange={(e) => {
                             handleChange(e);
                         }}
                         value={formValues.jobDescription}
                         name="jobDescription"
+                        className="w-80 h-7 rounded-md mt-2 text-black text-sm"
                     />
                 </div>
-                <div className="FormElement">
-                    <button className="SubmitBtn" type="submit">
+                <div className="FormElement mt-24">
+                    <button 
+                        className="SubmitBtn bg-white text-black 
+                            text-base font-semibold rounded-md w-52" type="submit">
                         Generate Cover Letter
                     </button>
                 </div>

@@ -20,8 +20,8 @@ const CoverLetterForm = () => {
                     chrome.tabs.sendMessage(tabs[0].id || 0, { type: "GET_TAB_DETAILS" } as DOMMessage, (response: DOMMessageResponse) => {
                         setFormValues({
                             ...formValues,
-                            jobDescription: response.jobDescription,
-                            tabUrl: response.tabUrl,
+                            jobDescription: response?.jobDescription || "Please paste a job descroption to genrate a cover letter",
+                            tabUrl: response?.tabUrl || "",
                         });
                     });
                 }

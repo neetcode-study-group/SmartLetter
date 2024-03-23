@@ -16,7 +16,13 @@ def generate_cover_letter(resume: str, job_description: str):
         template = """
         As an AI, you are tasked with creating a compelling and personalized cover letter for a job application. 
         Use the provided resume and job description to tailor the letter. Highlight relevant experiences and skills
-        that alighn with the job's requirments and duties.
+        that alighn with the job's requirments and duties. 
+
+    Rules:
+    1. The cover letter should be 300-500 words long.
+    2, If you mention the education in the cover letter only mention the education stated in the resume
+    3. The cover letter should be written in a professional and engaging tone.
+    4. Only mention information related to the job description from the resume in the cover letter do not add false information.
 
         Resume details:
         {resume}
@@ -32,9 +38,13 @@ def generate_cover_letter(resume: str, job_description: str):
         4. Concludes with a professional closing statement, expressing eagerness to discuss the role further in an 
         interview while also thanking the reader for their time and consideration.
 
-        Please write the cover letter in a professional and engaging tone. 
+        Rules:
+            1. The cover letter should be 300-500 words long.
+            2. If you mention the education in the cover letter only mention the education stated in the resume
+            3. The cover letter should be written in a professional and engaging tone. 
+            4. Only mention information related to the job description from the resume in the cover letter do not add false information.
         
-        Exclude the greetings and closing salutations. For example do not add "Dear Hiring Manager" or "Sincerely" at the end of the letter.
+        Furthermore I also want you to Exclude the greetings and closing salutations. For example do not add "Dear Hiring Manager" or "Sincerely" at the end of the letter.
 
         Scan the Resume to identify the applicant's name, and email.
         Scan the Job Description to identify the hiring manager's name. If no name is found, use "Hiring Manager" as the default value. 
@@ -45,7 +55,10 @@ def generate_cover_letter(resume: str, job_description: str):
         - email: The email of the applicant
         - hiringManager: The name of the hiring manager
         - coverLetterBody: The cover letter body
-        """
+       
+
+    Please write the cover letter abiding by the rules and guidelines provided above.
+    """
 
         prompt_template = PromptTemplate(
             input_variables=['resume', 'job_description'], template=template)
